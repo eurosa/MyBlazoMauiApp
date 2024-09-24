@@ -1,0 +1,40 @@
+﻿@page "/"
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+<h3>Two Input Fields Vertically Aligned</h3>
+
+<div class="input-container">
+    <div>
+        <label>First Number:</label>
+        <input type="number" @bind="number1" placeholder="Enter First Number" />
+    </div>
+
+    <div>
+        <label>Second Number:</label>
+        <input type="number" @bind="number2" placeholder="Enter Second Number" />
+    </div>
+
+    <div style="margin-top: 10px;">
+        <button class="btn btn-primary" @onclick="AddNumbers">Add</button>
+    </div>
+</div>
+
+@if (result.HasValue)
+{
+    <p>The sum is: <strong>@result</strong></p>
+}
+
+@code {
+    private double? number1;
+    private double? number2;
+    private double? result;
+
+    private void AddNumbers()
+    {
+        result = (number1 ?? 0) + (number2 ?? 0);
+    }
+}
